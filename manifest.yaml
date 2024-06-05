@@ -1,0 +1,16 @@
+---
+applications:
+  - name: aamva
+    routes:
+      - route: idva-aamva-((ENVIRONMENT)).apps.internal
+    buildpacks:
+      - dotnet_core_buildpack
+    env:
+      DOTNET_CLI_TELEMETRY_OPTOUT: "1"
+    processes:
+    - type: web
+      memory: ((MEMORY))
+      instances: ((INSTANCES))
+      health-check-type: process
+    services:
+      - aamva
